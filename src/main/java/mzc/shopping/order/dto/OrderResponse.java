@@ -21,12 +21,14 @@ public class OrderResponse {
     private BigDecimal totalPrice;
     private OrderStatus status;
     private LocalDateTime createdAt;
+    private String email;
 
     public static OrderResponse from(Order order) {
         return OrderResponse.builder()
                 .id(order.getId())
                 .userId(order.getUserId())
-                .items(order.getOrderItems().stream()
+                .email(order.getEmail())
+               .items(order.getOrderItems().stream()
                         .map(OrderItemResponse::from)
                         .collect(Collectors.toList()))
                 .totalPrice(order.getTotalPrice())

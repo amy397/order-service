@@ -23,6 +23,9 @@ public class Order {
     @Column(nullable = false)
     private Long userId;
 
+    @Column(nullable = false)
+    private String email;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<OrderItem> orderItems = new ArrayList<>();
