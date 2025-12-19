@@ -34,6 +34,7 @@ public class OrderService {
         // 2. 주문 생성
         Order order = Order.builder()
                 .userId(request.getUserId())
+                .email(request.getEmail())
                 .status(OrderStatus.PENDING)
                 .build();
 

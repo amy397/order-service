@@ -16,4 +16,6 @@ public class OrderRequest {
 
     @NotEmpty(message = "주문 상품은 최소 1개 이상이어야 합니다")
     private List<OrderItemRequest> items;
+
+    private String email;  // 추가
 }
