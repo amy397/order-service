@@ -33,6 +33,9 @@ public class OrderItem {
     @Column(nullable = false)
     private Integer quantity;
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String productImageUrl;
+
     // 소계 계산
     public BigDecimal getSubtotal() {
         return price.multiply(BigDecimal.valueOf(quantity));
