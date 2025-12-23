@@ -3,6 +3,8 @@ package mzc.shopping.order.dto;
 import lombok.*;
 import mzc.shopping.order.entity.Order;
 import mzc.shopping.order.entity.OrderStatus;
+import mzc.shopping.order.entity.ShippingAddress;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,6 +24,7 @@ public class OrderResponse {
     private OrderStatus status;
     private LocalDateTime createdAt;
     private String email;
+    private ShippingAddress shippingAddress;
 
     public static OrderResponse from(Order order) {
         return OrderResponse.builder()
@@ -33,6 +36,7 @@ public class OrderResponse {
                         .collect(Collectors.toList()))
                 .totalPrice(order.getTotalPrice())
                 .status(order.getStatus())
+                .shippingAddress(order.getShippingAddress())
                 .createdAt(order.getCreatedAt())
                 .build();
     }

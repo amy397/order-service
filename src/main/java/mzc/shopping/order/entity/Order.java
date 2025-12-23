@@ -37,6 +37,9 @@ public class Order {
     @Column(nullable = false)
     private OrderStatus status;
 
+    @Embedded
+    private ShippingAddress shippingAddress;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

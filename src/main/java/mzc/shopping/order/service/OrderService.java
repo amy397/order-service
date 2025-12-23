@@ -35,6 +35,7 @@ public class OrderService {
         Order order = Order.builder()
                 .userId(request.getUserId())
                 .email(request.getEmail())
+                .shippingAddress(request.getShippingAddress())  // 추가
                 .status(OrderStatus.PENDING)
                 .build();
 

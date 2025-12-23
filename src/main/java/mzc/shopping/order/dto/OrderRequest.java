@@ -2,6 +2,8 @@ package mzc.shopping.order.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
+import mzc.shopping.order.entity.ShippingAddress;
+
 import java.util.List;
 
 @Getter
@@ -18,4 +20,6 @@ public class OrderRequest {
     private List<OrderItemRequest> items;
 
     private String email;  // 추가
+
+    private ShippingAddress shippingAddress;
 }
