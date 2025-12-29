@@ -2,11 +2,11 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main , master]
+    branches: [ main, master ]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/product-service
+  IMAGE_NAME: ${{ github.repository_owner }}/order-service
 
 jobs:
   build-and-push:
@@ -73,8 +73,8 @@ jobs:
       - name: Update image tag in manifest
         run: |
           cd manifests
-          sed -i "s|image: ghcr.io/.*/product-service:.*|image: ghcr.io/${{ github.repository_owner }}/product-service:${{ steps.tag.outputs.TAG }}|g" deployments.yaml
-          sed -i "s|image: 10.10.10.10:5000/product-service:.*|image: ghcr.io/${{ github.repository_owner }}/product-service:${{ steps.tag.outputs.TAG }}|g" deployments.yaml
+          sed -i "s|image: ghcr.io/.*/order-service:.*|image: ghcr.io/${{ github.repository_owner }}/order-service:${{ steps.tag.outputs.TAG }}|g" deployments.yaml
+          sed -i "s|image: 10.10.10.10:5000/order-service:.*|image: ghcr.io/${{ github.repository_owner }}/order-service:${{ steps.tag.outputs.TAG }}|g" deployments.yaml
 
       - name: Commit and push changes
         run: |
@@ -82,5 +82,5 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
-          git diff --staged --quiet || git commit -m "chore: update product-service image to ${{ steps.tag.outputs.TAG }}"
+          git diff --staged --quiet || git commit -m "chore: update order-service image to ${{ steps.tag.outputs.TAG }}"
           git push
